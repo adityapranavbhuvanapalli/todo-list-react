@@ -32,7 +32,7 @@ export default class App extends Component {
             <Typography variant="h4">To-do List</Typography>
           </AppBar>
           <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask}/>
-          <Button color="primary">Add new Task</Button>
+          <Button color="primary" onClick={()=>{alert("Feature under development")}}>Add new Task</Button>
         </Paper>
       </div>
     );

@@ -35,6 +35,7 @@ const Tasks = ({tasks,deleteTask}) => {
     const [open, setOpen] = React.useState(false);
     const handleClick = () => {
         // setOpen(!task.open);
+        alert("Feature under development")
         setOpen(!open)
     };
 
