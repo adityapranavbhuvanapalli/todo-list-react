@@ -6,18 +6,23 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import logo from './logo.svg';
 import './App.css';
-import Todos from './components/Todos'
+import Tasks from './components/Tasks'
 
 export default class App extends Component {
   state = {
-    todos: [
+    tasks: [
       {id:1, name:'Task 1', desc:"This is a description of Task 1"},
       {id:2, name:'Task 2', desc:"This is a description of Task 2"},
       {id:3, name:'Task 3', desc:"This is a description of Task 3"}
     ]
   }
 
-  
+  deleteTask = (id) => {
+    const tasks = this.state.tasks.filter(task => {
+      return task.id !== id
+    });
+    this.setState({tasks});
+  }
 
   render(){
     return (
@@ -26,7 +31,7 @@ export default class App extends Component {
           <AppBar position="static">
             <Typography variant="h4">To-do List</Typography>
           </AppBar>
-          <Todos todos={this.state.todos} />
+          <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask}/>
           <Button color="primary">Add new Task</Button>
         </Paper>
       </div>

@@ -29,35 +29,35 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const Todos = ({todos}) => {
+const Tasks = ({tasks,deleteTask}) => {
     const classes = useStyles();
 
     const [open, setOpen] = React.useState(false);
     const handleClick = () => {
-        // setOpen(!todo.open);
+        // setOpen(!task.open);
         setOpen(!open)
     };
 
     console.log(open)
 
-    const todoList = todos.length ? (
+    const taskList = tasks.length ? (
         <List>
             {
-                todos.map(todo => {return(
+                tasks.map(task => {return(
                 <div>
-                    <ListItem button onClick={()=>handleClick(todo)} key={todo.id}>
+                    <ListItem button onClick={()=>handleClick(task)} key={task.id}>
                         <ListItemAvatar>
                         <Avatar>
                             <WorkIcon />
                         </Avatar>
                         </ListItemAvatar> 
                         <ListItemText
-                        primary={todo.name}
+                        primary={task.name}
                         />
                         {open ? <ExpandLess /> : <ExpandMore />}
                         <ListItemSecondaryAction>
                         <IconButton edge="end" aria-label="delete">
-                            <DeleteIcon />
+                            <DeleteIcon onClick={() => deleteTask(task.id)}/>
                         </IconButton>
                         </ListItemSecondaryAction>
                     </ListItem>
@@ -67,7 +67,7 @@ const Todos = ({todos}) => {
                             <ListItemIcon>
                                 <BookIcon />
                             </ListItemIcon>
-                            <ListItemText primary={todo.desc} />
+                            <ListItemText primary={task.desc} />
                             </ListItem>
                         </List>
                     </Collapse>
@@ -78,12 +78,12 @@ const Todos = ({todos}) => {
     )
     : (<p>Add a task to the Todo-List</p>)
     return (
-        <div className="todos">
-            {todoList}
+        <div className="tasks">
+            {taskList}
         </div>
     )
 }
 
-export default Todos;
+export default Tasks;
 
 
