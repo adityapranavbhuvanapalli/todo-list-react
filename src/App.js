@@ -47,7 +47,7 @@ export default class App extends Component {
       <div className="App">
         <Paper elevation={3}>
           <AppBar position="static">
-            <Typography variant="h4">To-do List</Typography>
+            <Typography variant="h4">To-do Tracker</Typography>
           </AppBar>
           <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask}/>
           <Button color="primary" onClick={()=>{this.addTask()}}>Add new Task</Button>
