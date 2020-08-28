@@ -24,6 +24,24 @@ export default class App extends Component {
     this.setState({tasks});
   }
 
+  addTask = () => {
+    const newId = this.state.tasks.length+1;
+    this.setState(state => {
+      const tasks = [
+        ...state.tasks, 
+        {
+          id : newId,
+          name : "Task "+newId,
+          desc : "This is a description of Task " + newId 
+        }     
+      ];
+ 
+      return {
+        tasks
+      };
+    });
+  }
+
   render(){
     return (
       <div className="App">
@@ -32,7 +50,7 @@ export default class App extends Component {
             <Typography variant="h4">To-do List</Typography>
           </AppBar>
           <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask}/>
-          <Button color="primary" onClick={()=>{alert("Feature under development")}}>Add new Task</Button>
+          <Button color="primary" onClick={()=>{this.addTask()}}>Add new Task</Button>
         </Paper>
       </div>
     );
