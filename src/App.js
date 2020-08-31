@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import logo from './logo.svg';
 import './App.css';
 import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
 
 export default class App extends Component {
   state = {
@@ -24,16 +25,13 @@ export default class App extends Component {
     this.setState({tasks});
   }
 
-  addTask = () => {
-    const newId = this.state.tasks.length+1;
+  addTask = (task) => {
+    task.id=Math.random()
+    // const newId = this.state.tasks.length+1;
     this.setState(state => {
       const tasks = [
         ...state.tasks, 
-        {
-          id : newId,
-          name : "Task "+newId,
-          desc : "This is a description of Task " + newId 
-        }     
+        task    
       ];
  
       return {
@@ -50,21 +48,10 @@ export default class App extends Component {
             <Typography variant="h4">To-do Tracker</Typography>
           </AppBar>
           <Tasks tasks={this.state.tasks} deleteTask={this.deleteTask}/>
-          <Button color="primary" onClick={()=>{this.addTask()}}>Add new Task</Button>
+          <AddTask addTask={this.addTask}/> 
         </Paper>
       </div>
     );
   }
 }
 
-{/* <AppBar position="static">
-  <Toolbar>
-    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-      <MenuIcon />
-    </IconButton>
-    <Typography variant="h6" className={classes.title}>
-      News
-    </Typography>
-    <Button color="inherit">Login</Button>
-  </Toolbar>
-</AppBar> */}

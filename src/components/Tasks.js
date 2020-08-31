@@ -33,13 +33,12 @@ const Tasks = ({tasks,deleteTask}) => {
     const classes = useStyles();
 
     const [open, setOpen] = React.useState(false);
+
     const handleClick = () => {
         // setOpen(!task.open);
         alert("Feature under development")
         setOpen(!open)
     };
-
-    console.log(open)
 
     const taskList = tasks.length ? (
         <List>
